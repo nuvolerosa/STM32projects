@@ -1,0 +1,5 @@
+states.cpp:14:5:int state_init_and_instruction(int, int)	16	static
+states.cpp:20:5:int state_instruction(int)	16	static
+states.cpp:25:5:int state_end_demo(int, int)	24	static
+states.cpp:36:5:int state_camera_cycle()	16	static
+states.cpp:45:5:int state_camera_cycle_empty()	16	static
