@@ -1,0 +1,18 @@
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:39:14:static TfLiteStatus tflite::internal::ContextHelper::AllocatePersistentBuffer(TfLiteContext*, size_t, void**)	0	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:45:14:static TfLiteStatus tflite::internal::ContextHelper::RequestScratchBufferInArena(TfLiteContext*, size_t, int*)	0	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:53:7:static void* tflite::internal::ContextHelper::GetScratchBuffer(TfLiteContext*, int)	0	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:58:6:)	12	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:27:13:const char* tflite::{anonymous}::OpNameFromRegistration(const TfLiteRegistration*)	0	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2424:13:flatbuffers::voffset_t flatbuffers::Table::GetOptionalFieldOffset(flatbuffers::voffset_t) const	0	static
+../tensorflow/tensorflow/lite/schema/schema_generated.h:10315:69:const flatbuffers::Vector<flatbuffers::Offset<tflite::Operator> >* tflite::SubGraph::operators() const	8	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:69:1:tflite::MicroInterpreter::MicroInterpreter(const tflite::Model*, const tflite::OpResolver&, uint8_t*, size_t, tflite::ErrorReporter*)	40	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:111:1:tflite::MicroInterpreter::~MicroInterpreter()	24	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:126:6:void tflite::MicroInterpreter::CorrectTensorEndianness(TfLiteTensor*)	0	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:163:14:TfLiteStatus tflite::MicroInterpreter::AllocateTensors()	40	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:225:14:TfLiteStatus tflite::MicroInterpreter::Invoke()	32	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:280:15:TfLiteTensor* tflite::MicroInterpreter::tensor(size_t)	8	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:291:14:TfLiteStatus tflite::MicroInterpreter::ResetVariableTensors()	24	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:256:15:flatbuffers::Vector<T>::return_type flatbuffers::Vector<T>::Get(flatbuffers::uoffset_t) const [with T = long int]	8	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2439:26:P flatbuffers::Table::GetPointer(flatbuffers::voffset_t) [with P = const flatbuffers::Vector<long int>*]	8	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:269:15:TfLiteTensor* tflite::MicroInterpreter::output(size_t)	16	static
+../tensorflow/tensorflow/lite/micro/micro_interpreter.cc:258:15:TfLiteTensor* tflite::MicroInterpreter::input(size_t)	16	static

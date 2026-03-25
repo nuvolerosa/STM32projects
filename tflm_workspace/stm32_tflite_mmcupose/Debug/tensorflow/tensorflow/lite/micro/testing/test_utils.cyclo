@@ -1,0 +1,18 @@
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:82:7:void* tflite::testing::{anonymous}::GetScratchBuffer(TfLiteContext*, int)	2
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:58:14:TfLiteStatus tflite::testing::{anonymous}::RequestScratchBufferInArena(TfLiteContext*, size_t, int*)	4
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:47:14:TfLiteStatus tflite::testing::{anonymous}::AllocatePersistentBuffer(TfLiteContext*, size_t, void**)	2
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:92:9:uint8_t tflite::testing::F2Q(float, float, float)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:105:8:int8_t tflite::testing::F2QS(float, float, float)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:109:9:int32_t tflite::testing::F2Q32(float, float)	3
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:120:6:void tflite::testing::PopulateContext(TfLiteTensor*, int, tflite::ErrorReporter*, TfLiteContext*)	3
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:151:14:TfLiteTensor tflite::testing::CreateFloatTensor(std::initializer_list<float>, TfLiteIntArray*, const char*, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:157:14:TfLiteTensor tflite::testing::CreateBoolTensor(std::initializer_list<bool>, TfLiteIntArray*, const char*, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:163:14:TfLiteTensor tflite::testing::CreateQuantizedTensor(const uint8_t*, TfLiteIntArray*, const char*, float, float, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:180:14:TfLiteTensor tflite::testing::CreateQuantizedTensor(std::initializer_list<unsigned char>, TfLiteIntArray*, const char*, float, float, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:186:14:TfLiteTensor tflite::testing::CreateQuantizedTensor(const int8_t*, TfLiteIntArray*, const char*, float, float, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:203:14:TfLiteTensor tflite::testing::CreateQuantizedTensor(std::initializer_list<signed char>, TfLiteIntArray*, const char*, float, float, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:209:14:TfLiteTensor tflite::testing::CreateQuantizedTensor(float*, uint8_t*, TfLiteIntArray*, const char*, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:226:14:TfLiteTensor tflite::testing::CreateQuantizedTensor(float*, int8_t*, TfLiteIntArray*, const char*, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:243:14:TfLiteTensor tflite::testing::CreateQuantizedTensor(float*, int16_t*, TfLiteIntArray*, const char*, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:260:14:TfLiteTensor tflite::testing::CreateQuantized32Tensor(const int32_t*, TfLiteIntArray*, const char*, float, bool)	1
+../tensorflow/tensorflow/lite/micro/testing/test_utils.cc:279:14:TfLiteTensor tflite::testing::CreateQuantized32Tensor(std::initializer_list<long int>, TfLiteIntArray*, const char*, float, bool)	1

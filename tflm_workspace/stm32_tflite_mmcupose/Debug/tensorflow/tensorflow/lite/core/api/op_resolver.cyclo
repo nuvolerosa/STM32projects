@@ -1,0 +1,2 @@
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2424:13:flatbuffers::voffset_t flatbuffers::Table::GetOptionalFieldOffset(flatbuffers::voffset_t) const	2
+../tensorflow/tensorflow/lite/core/api/op_resolver.cc:20:14:TfLiteStatus tflite::GetRegistrationFromOpCode(const OperatorCode*, const OpResolver&, ErrorReporter*, const TfLiteRegistration**)	7

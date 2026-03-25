@@ -1,0 +1,14 @@
+../tensorflow/tensorflow/lite/micro/kernels/prelu.cc:28:14:TfLiteStatus tflite::ops::micro::activations::PreluPrepare(TfLiteContext*, TfLiteNode*)	0	static
+../tensorflow/tensorflow/lite/kernels/internal/types.h:178:3:tflite::RuntimeShape::~RuntimeShape()	8	static
+../tensorflow/tensorflow/lite/kernels/internal/types.h:189:16:int32 tflite::RuntimeShape::Dims(int) const	8	static
+../tensorflow/tensorflow/lite/kernels/internal/types.h:280:3:tflite::RuntimeShape::RuntimeShape(int, const tflite::RuntimeShape&, int)	24	static
+../tensorflow/tensorflow/lite/kernels/internal/types.h:379:12:int tflite::Offset(const RuntimeShape&, int, int, int, int)	16	static
+../tensorflow/tensorflow/lite/kernels/internal/common.h:153:14:int32 tflite::MultiplyByQuantizedMultiplier(int32, int32, int)	16	static
+../tensorflow/tensorflow/lite/kernels/internal/common.h:632:12:int tflite::SubscriptToIndex(const NdArrayDesc<4>&, int, int, int, int)	16	static
+../tensorflow/tensorflow/lite/kernels/internal/tensor_ctypes.h:34:21:tflite::RuntimeShape tflite::GetTensorShape(const TfLiteTensor*)	16	static
+../tensorflow/tensorflow/lite/micro/kernels/prelu.cc:115:21:TfLiteRegistration* tflite::ops::micro::Register_PRELU()	0	static
+../tensorflow/tensorflow/lite/kernels/internal/common.h:707:13:void tflite::CopyDimsToDesc(const RuntimeShape&, NdArrayDesc<N>*) [with int N = 4]	24	static
+../tensorflow/tensorflow/lite/kernels/internal/common.h:718:13:void tflite::NdArrayDescsForElementwiseBroadcast(const RuntimeShape&, const RuntimeShape&, NdArrayDesc<N>*, NdArrayDesc<N>*) [with int N = 4]	72	static
+../tensorflow/tensorflow/lite/micro/kernels/prelu.cc:32:13:void tflite::ops::micro::activations::BroadcastPrelu4DSlowFloat(const tflite::RuntimeShape&, const float*, const tflite::RuntimeShape&, const float*, const tflite::RuntimeShape&, float*)	136	static
+../tensorflow/tensorflow/lite/kernels/internal/reference/prelu.h:28:13:void tflite::reference_ops::BroadcastPrelu4DSlow(const tflite::PreluParams&, const tflite::RuntimeShape&, const T*, const tflite::RuntimeShape&, const T*, const tflite::RuntimeShape&, T*) [with T = unsigned char]	136	static
+../tensorflow/tensorflow/lite/micro/kernels/prelu.cc:63:14:TfLiteStatus tflite::ops::micro::activations::PreluEval(TfLiteContext*, TfLiteNode*)	192	static

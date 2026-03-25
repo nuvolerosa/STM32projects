@@ -1,0 +1,25 @@
+/**
+  ******************************************************************************
+  * @file    lcd.h
+  * @author  Fahad Mirza (fahadmirza8@gmail.com)
+  * @brief   Header file for LCD functionalities
+  ******************************************************************************
+  */
+
+#ifndef LCD_H_
+#define LCD_H_
+
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
+/* Public functions ---------------------------------------------------------*/
+void LCD_Init(void);
+// Draw `count` joints as small dots; auto-scales from min/max of the arrays.
+void LCD_DrawSkeletonDots(const float *x, const float *y, int count);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // LCD_H_

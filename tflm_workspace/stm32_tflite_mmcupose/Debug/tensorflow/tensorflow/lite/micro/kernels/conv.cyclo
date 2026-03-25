@@ -1,0 +1,17 @@
+../tensorflow/tensorflow/lite/micro/kernels/conv.cc:110:7:void* tflite::ops::micro::conv::Init(TfLiteContext*, const char*, size_t)	2
+../tensorflow/tensorflow/lite/kernels/internal/types.h:178:3:tflite::RuntimeShape::~RuntimeShape()	3
+../tensorflow/tensorflow/lite/kernels/internal/types.h:189:16:int32 tflite::RuntimeShape::Dims(int) const	3
+../tensorflow/tensorflow/lite/kernels/internal/types.h:265:14:int tflite::RuntimeShape::FlatSize() const	3
+../tensorflow/tensorflow/lite/kernels/internal/types.h:379:12:int tflite::Offset(const RuntimeShape&, int, int, int, int)	9
+../tensorflow/tensorflow/lite/kernels/internal/types.h:432:12:int tflite::MatchingDim(const RuntimeShape&, int, const RuntimeShape&, int)	1
+../tensorflow/tensorflow/lite/kernels/internal/common.h:153:14:int32 tflite::MultiplyByQuantizedMultiplier(int32, int32, int)	4
+../tensorflow/tensorflow/lite/kernels/internal/reference/integer_ops/conv.h:24:13:void tflite::reference_integer_ops::ConvPerChannel(const tflite::ConvParams&, const int32*, const int32*, const tflite::RuntimeShape&, const int8*, const tflite::RuntimeShape&, const int8*, const tflite::RuntimeShape&, const int32*, const tflite::RuntimeShape&, int8*)	17
+../tensorflow/tensorflow/lite/kernels/internal/tensor_ctypes.h:34:21:tflite::RuntimeShape tflite::GetTensorShape(const TfLiteTensor*)	4
+../tensorflow/tensorflow/lite/kernels/padding.h:44:12:int tflite::ComputeOutSize(TfLitePadding, int, int, int, int)	3
+../tensorflow/tensorflow/lite/micro/kernels/conv.cc:72:14:TfLiteStatus tflite::ops::micro::conv::CalculateOpData(TfLiteContext*, TfLiteNode*, const TfLiteConvParams*, int, int, int, int, int, int, TfLiteType, OpData*)	6
+../tensorflow/tensorflow/lite/micro/kernels/conv.cc:120:14:TfLiteStatus tflite::ops::micro::conv::Prepare(TfLiteContext*, TfLiteNode*)	12
+../tensorflow/tensorflow/lite/micro/kernels/conv.cc:171:6:void tflite::ops::micro::conv::EvalQuantized(TfLiteContext*, TfLiteNode*, TfLiteConvParams*, const OpData&, const TfLiteTensor*, const TfLiteTensor*, const TfLiteTensor*, TfLiteTensor*, TfLiteTensor*, TfLiteTensor*)	18
+../tensorflow/tensorflow/lite/micro/kernels/conv.cc:204:6:void tflite::ops::micro::conv::EvalQuantizedPerChannel(TfLiteContext*, TfLiteNode*, TfLiteConvParams*, const OpData&, const TfLiteTensor*, const TfLiteTensor*, const TfLiteTensor*, TfLiteTensor*, TfLiteTensor*)	3
+../tensorflow/tensorflow/lite/micro/kernels/conv.cc:232:6:void tflite::ops::micro::conv::EvalFloat(TfLiteContext*, TfLiteNode*, TfLiteConvParams*, const OpData&, const TfLiteTensor*, const TfLiteTensor*, const TfLiteTensor*, TfLiteTensor*, TfLiteTensor*, TfLiteTensor*)	23
+../tensorflow/tensorflow/lite/micro/kernels/conv.cc:260:14:TfLiteStatus tflite::ops::micro::conv::Eval(TfLiteContext*, TfLiteNode*)	6
+../tensorflow/tensorflow/lite/micro/kernels/conv.cc:294:21:TfLiteRegistration* tflite::ops::micro::Register_CONV_2D()	1

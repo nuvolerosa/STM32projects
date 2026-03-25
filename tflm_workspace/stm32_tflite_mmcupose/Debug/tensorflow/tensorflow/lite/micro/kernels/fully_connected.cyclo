@@ -1,0 +1,11 @@
+../tensorflow/tensorflow/lite/micro/kernels/fully_connected.cc:73:7:void* tflite::ops::micro::fully_connected::Init(TfLiteContext*, const char*, size_t)	2
+../tensorflow/tensorflow/lite/micro/kernels/fully_connected.cc:83:14:TfLiteStatus tflite::ops::micro::fully_connected::Prepare(TfLiteContext*, TfLiteNode*)	9
+../tensorflow/tensorflow/lite/kernels/internal/types.h:178:3:tflite::RuntimeShape::~RuntimeShape()	3
+../tensorflow/tensorflow/lite/kernels/internal/types.h:189:16:int32 tflite::RuntimeShape::Dims(int) const	3
+../tensorflow/tensorflow/lite/kernels/internal/types.h:432:12:int tflite::MatchingDim(const RuntimeShape&, int, const RuntimeShape&, int)	1
+../tensorflow/tensorflow/lite/kernels/internal/types.h:635:12:int tflite::FlatSizeSkipDim(const RuntimeShape&, int)	5
+../tensorflow/tensorflow/lite/kernels/internal/common.h:153:14:int32 tflite::MultiplyByQuantizedMultiplier(int32, int32, int)	4
+../tensorflow/tensorflow/lite/kernels/internal/tensor_ctypes.h:34:21:tflite::RuntimeShape tflite::GetTensorShape(const TfLiteTensor*)	4
+../tensorflow/tensorflow/lite/micro/kernels/fully_connected.cc:166:14:TfLiteStatus tflite::ops::micro::fully_connected::EvalFloat(TfLiteContext*, TfLiteNode*, TfLiteFusedActivation, const TfLiteTensor*, const TfLiteTensor*, const TfLiteTensor*, TfLiteTensor*)	12
+../tensorflow/tensorflow/lite/micro/kernels/fully_connected.cc:184:14:TfLiteStatus tflite::ops::micro::fully_connected::Eval(TfLiteContext*, TfLiteNode*)	32
+../tensorflow/tensorflow/lite/micro/kernels/fully_connected.cc:219:21:TfLiteRegistration* tflite::ops::micro::Register_FULLY_CONNECTED()	1

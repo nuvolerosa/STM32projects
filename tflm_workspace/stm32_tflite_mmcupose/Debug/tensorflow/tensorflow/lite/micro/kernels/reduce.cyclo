@@ -1,0 +1,15 @@
+../tensorflow/tensorflow/lite/micro/kernels/reduce.cc:37:7:void* tflite::ops::micro::reduce::Init(TfLiteContext*, const char*, size_t)	2
+../tensorflow/tensorflow/lite/kernels/internal/types.h:178:3:tflite::RuntimeShape::~RuntimeShape()	3
+../tensorflow/tensorflow/lite/kernels/internal/types.h:189:16:int32 tflite::RuntimeShape::Dims(int) const	3
+../tensorflow/tensorflow/lite/kernels/internal/types.h:280:3:tflite::RuntimeShape::RuntimeShape(int, const tflite::RuntimeShape&, int)	8
+../tensorflow/tensorflow/lite/kernels/internal/types.h:324:13:bool tflite::NextIndex(int, const int*, int*)	6
+../tensorflow/tensorflow/lite/kernels/internal/types.h:351:15:size_t tflite::ReducedOutputOffset(int, const int*, const int*, int, const int*)	7
+../tensorflow/tensorflow/lite/kernels/internal/types.h:379:12:int tflite::Offset(const RuntimeShape&, int, int, int, int)	9
+../tensorflow/tensorflow/lite/kernels/internal/reference/reduce.h:56:13:bool tflite::reference_ops::ResolveAxis(int, const int*, int64_t, int*, int*)	7
+../tensorflow/tensorflow/lite/kernels/internal/tensor_ctypes.h:34:21:tflite::RuntimeShape tflite::GetTensorShape(const TfLiteTensor*)	4
+../tensorflow/tensorflow/lite/micro/kernels/reduce.cc:49:14:TfLiteStatus tflite::ops::micro::reduce::PrepareSimple(TfLiteContext*, TfLiteNode*)	4
+../tensorflow/tensorflow/lite/micro/kernels/reduce.cc:67:14:TfLiteStatus tflite::ops::micro::reduce::PrepareMeanOrSum(TfLiteContext*, TfLiteNode*)	6
+../tensorflow/tensorflow/lite/micro/kernels/reduce.cc:84:6:void tflite::ops::micro::reduce::ResolveAxis(const int*, int, tflite::MeanParams*)	3
+../tensorflow/tensorflow/lite/micro/kernels/reduce.cc:172:21:TfLiteRegistration* tflite::ops::micro::Register_MEAN()	1
+../tensorflow/tensorflow/lite/kernels/internal/reference/reduce.h:207:13:void tflite::reference_ops::Mean(const tflite::MeanParams&, const tflite::RuntimeShape&, const T*, const tflite::RuntimeShape&, T*) [with T = float]	13
+../tensorflow/tensorflow/lite/micro/kernels/reduce.cc:96:14:TfLiteStatus tflite::ops::micro::reduce::EvalMean(TfLiteContext*, TfLiteNode*)	47
