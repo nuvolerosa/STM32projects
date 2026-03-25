@@ -1,9 +1,0 @@
-states_func.cpp:30:6:void train(int)	40	static
-states_func.cpp:41:6:void invoke_new_weights_givenimg(signed char*)	24	static
-states_func.cpp:48:6:void mode_init(int)	24	static
-states_func.cpp:63:6:void mode_instruction(int)	24	static
-states_func.cpp:81:6:void training_mode(int, int)	24	static
-states_func.cpp:95:5:int inference_mode(int)	32	static
-states_func.cpp:124:6:void FillAndConvertToRGB(int8_t*, uint16_t*, int, int)	48	static
-states_func.cpp:142:1:void __static_initialization_and_destruction_0(int, int)	16	static
-states_func.cpp:142:1:cpp)	8	static

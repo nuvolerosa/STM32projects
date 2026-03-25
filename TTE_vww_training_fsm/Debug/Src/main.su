@@ -1,7 +1,0 @@
-profile.h:28:6:void printLog(const char*)	16	static
-profile.h:69:6:void recieveChar(char*)	16	static
-main.cpp:53:5:int main()	40	static
-main.cpp:132:6:void SystemClock_Config()	80	static
-main.cpp:174:13:void Error_Handler()	8	static
-main.cpp:181:13:void CPU_CACHE_Enable()	24	static,ignoring_inline_asm
-main.cpp:188:13:void MX_GPIO_Init()	72	static
