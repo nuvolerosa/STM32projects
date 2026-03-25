@@ -1,0 +1,10 @@
+11:19:18 **** Incremental Build of configuration Debug for project stm32_tflite_sine ****
+make -j8 all 
+arm-none-eabi-size  stm32_tflite_sine.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 129844	   1792	   9112	 140748	  225cc	stm32_tflite_sine.elf
+Finished building: default.size.stdout
+ 
+
+11:19:19 Build Finished. 0 errors, 0 warnings. (took 134ms)
+

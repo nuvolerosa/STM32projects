@@ -1,0 +1,113 @@
+/*
+ * tflm_app.cpp
+ *
+ * Minimal TensorFlow Lite Micro functions for STM32
+ */
+
+#include "mars_e300_comp_gf_woatt_srnn.h"  // Your .tflite model in a header
+#include "tensorflow/lite/micro/micro_interpreter.h"
+#include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
+#include "tensorflow/lite/schema/schema_generated.h"
+
+// --------------------------------------------------
+// Configuration
+// --------------------------------------------------
+constexpr int kTensorArenaSize = 20 * 1024;  // Adjust as needed
+static uint8_t tensor_arena[kTensorArenaSize];
+
+// Input size (from your model: 32x64x6)
+constexpr int kInputSize = 32 * 64 * 6;
+
+// --------------------------------------------------
+// Globals
+// --------------------------------------------------
+tflite::ErrorReporter* error_reporter = nullptr;
+tflite::MicroInterpreter* interpreter = nullptr;
+TfLiteTensor* input = nullptr;
+TfLiteTensor* output = nullptr;
+
+// --------------------------------------------------
+// Register only the ops your model needs
+// --------------------------------------------------
+using OpResolver = tflite::MicroMutableOpResolver<19>;
+
+TfLiteStatus RegisterOps(OpResolver& resolver) {
+    TF_LITE_ENSURE_STATUS(resolver.AddFullyConnected());
+    TF_LITE_ENSURE_STATUS(resolver.AddConv2D());
+    TF_LITE_ENSURE_STATUS(resolver.AddAveragePool2D());
+    TF_LITE_ENSURE_STATUS(resolver.AddAdd());
+    TF_LITE_ENSURE_STATUS(resolver.AddRelu());
+    TF_LITE_ENSURE_STATUS(resolver.AddMul());
+    TF_LITE_ENSURE_STATUS(resolver.AddMean());
+    TF_LITE_ENSURE_STATUS(resolver.AddSoftmax());
+    TF_LITE_ENSURE_STATUS(resolver.AddReshape());
+    TF_LITE_ENSURE_STATUS(resolver.AddStridedSlice());
+    TF_LITE_ENSURE_STATUS(resolver.AddConcatenation());
+    TF_LITE_ENSURE_STATUS(resolver.AddSum());
+    TF_LITE_ENSURE_STATUS(resolver.AddUnpack());
+    TF_LITE_ENSURE_STATUS(resolver.AddSplit());
+    TF_LITE_ENSURE_STATUS(resolver.AddLogistic());
+    TF_LITE_ENSURE_STATUS(resolver.AddTanh());
+    TF_LITE_ENSURE_STATUS(resolver.AddPack());
+    TF_LITE_ENSURE_STATUS(resolver.AddPad());
+    TF_LITE_ENSURE_STATUS(resolver.AddQuantize());
+    return kTfLiteOk;
+}
+
+// --------------------------------------------------
+// Initialize TFLM
+// --------------------------------------------------
+void tflm_init() {
+    static tflite::MicroErrorReporter micro_error_reporter;
+    error_reporter = &micro_error_reporter;
+
+    const tflite::Model* model = tflite::GetModel(model_tflite);
+    if (model->version() != TFLITE_SCHEMA_VERSION) {
+        TF_LITE_REPORT_ERROR(error_reporter,
+                             "Model schema version %d not equal to supported version %d.",
+                             model->version(), TFLITE_SCHEMA_VERSION);
+        return;
+    }
+
+    static OpResolver resolver;
+    RegisterOps(resolver);
+
+    static tflite::MicroInterpreter static_interpreter(model, resolver, tensor_arena, kTensorArenaSize, error_reporter);
+    interpreter = &static_interpreter;
+
+    TfLiteStatus allocate_status = interpreter->AllocateTensors();
+    if (allocate_status != kTfLiteOk) {
+        TF_LITE_REPORT_ERROR(error_reporter, "AllocateTensors() failed");
+        return;
+    }
+
+    input = interpreter->input(0);
+    output = interpreter->output(0);
+}
+
+// --------------------------------------------------
+// Run inference with input tensor
+// --------------------------------------------------
+float tflm_run(const int8_t* input_data) {
+    // Copy input into tensor
+    for (int i = 0; i < kInputSize; i++) {
+        input->data.int8[i] = input_data[i];
+    }
+
+    TfLiteStatus invoke_status = interpreter->Invoke();
+    if (invoke_status != kTfLiteOk) {
+        TF_LITE_REPORT_ERROR(error_reporter, "Invoke failed");
+        return 0.0f;
+    }
+
+    return output->data.f[0];  // Adjust if your output is larger
+}
+
+// --------------------------------------------------
+// Optional: helper to generate random input
+// --------------------------------------------------
+void GenerateRandomTensor(int8_t* tensor) {
+    for (int i = 0; i < kInputSize; ++i) {
+        tensor[i] = (rand() % 256) - 128;  // int8 range
+    }
+}

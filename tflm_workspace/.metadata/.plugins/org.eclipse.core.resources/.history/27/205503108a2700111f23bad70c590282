@@ -1,0 +1,7 @@
+#ifndef SMALL_MODEL_CPP_
+#define SMALL_MODEL_CPP_
+
+extern const unsigned char mymodel_int8[];
+extern const unsigned int mymodel_int8_len;
+
+#endif  // MARS_E300_COMPRESSED_TCN_H_

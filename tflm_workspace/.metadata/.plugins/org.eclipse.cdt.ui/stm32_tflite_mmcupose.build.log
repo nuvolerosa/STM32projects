@@ -1,0 +1,10 @@
+11:18:47 **** Incremental Build of configuration Debug for project stm32_tflite_mmcupose ****
+make -j8 all 
+arm-none-eabi-size  stm32_tflite_mmcupose.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 213932	    536	 310928	 525396	  80454	stm32_tflite_mmcupose.elf
+Finished building: default.size.stdout
+ 
+
+11:18:47 Build Finished. 0 errors, 0 warnings. (took 127ms)
+
