@@ -3,6 +3,8 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="small_model_len"/>
+		<item value="TF_LITE_REPORT_ERROR"/>
 		<item value="data.f[0];"/>
 		<item value="sine_model"/>
 		<item value="StartDefaultTask"/>
