@@ -1,0 +1,3 @@
+../tensorflow/tensorflow/lite/micro/simple_memory_allocator.cc:36:10:uint8_t* tflite::SimpleMemoryAllocator::AllocateFromHead(size_t, size_t)	24	static
+../tensorflow/tensorflow/lite/micro/simple_memory_allocator.cc:51:10:uint8_t* tflite::SimpleMemoryAllocator::AllocateFromTail(size_t, size_t)	24	static
+../tensorflow/tensorflow/lite/micro/simple_memory_allocator.cc:25:24:tflite::SimpleMemoryAllocator* tflite::CreateInPlaceSimpleMemoryAllocator(ErrorReporter*, uint8_t*, size_t)	40	static

@@ -10,6 +10,7 @@
 "./Core/syscalls.o"
 "./Core/sysmem.o"
 "./Core/system_stm32f7xx.o"
+"./Core/tcn_small.o"
 "./Drivers/BSP/STM32746G-Discovery/stm32746g_discovery.o"
 "./Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_lcd.o"
 "./Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_sdram.o"

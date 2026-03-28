@@ -1,0 +1,5 @@
+../tensorflow/tensorflow/lite/micro/memory_helpers.cc:24:10:uint8_t* tflite::AlignPointerUp(uint8_t*, size_t)	0	static
+../tensorflow/tensorflow/lite/micro/memory_helpers.cc:31:10:uint8_t* tflite::AlignPointerDown(uint8_t*, size_t)	0	static
+../tensorflow/tensorflow/lite/micro/memory_helpers.cc:38:8:size_t tflite::AlignSizeUp(size_t, size_t)	0	static
+../tensorflow/tensorflow/lite/micro/memory_helpers.cc:43:14:TfLiteStatus tflite::TfLiteTypeSizeOf(TfLiteType, size_t*, ErrorReporter*)	16	static
+../tensorflow/tensorflow/lite/micro/memory_helpers.cc:78:14:TfLiteStatus tflite::BytesRequiredForTensor(const Tensor&, size_t*, size_t*, ErrorReporter*)	32	static

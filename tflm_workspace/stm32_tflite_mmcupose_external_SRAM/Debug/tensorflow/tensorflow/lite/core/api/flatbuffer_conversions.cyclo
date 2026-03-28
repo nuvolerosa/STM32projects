@@ -1,0 +1,11 @@
+../tensorflow/tensorflow/lite/core/api/flatbuffer_conversions.cc:63:14:TfLiteStatus tflite::{anonymous}::FlatBufferIntVectorToArray(int, const flatbuffers::Vector<long int>*, int*, tflite::ErrorReporter*, const char*)	4
+../tensorflow/tensorflow/lite/core/api/flatbuffer_conversions.cc:38:10:void tflite::{anonymous}::SafeBuiltinDataAllocator::BuiltinDataDeleter::operator()(void*)	1
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2424:13:flatbuffers::voffset_t flatbuffers::Table::GetOptionalFieldOffset(flatbuffers::voffset_t) const	2
+../tensorflow/tensorflow/lite/schema/schema_generated.h:9442:15:const void* tflite::Operator::builtin_options() const	2
+../tensorflow/tensorflow/lite/core/api/flatbuffer_conversions.cc:90:14:TfLiteStatus tflite::ConvertTensorType(TensorType, TfLiteType*, ErrorReporter*)	12
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2434:26:T flatbuffers::Table::GetField(flatbuffers::voffset_t, T) const [with T = unsigned char]	2
+../tensorflow/tensorflow/lite/schema/schema_generated.h:9439:26:tflite::BuiltinOptions tflite::Operator::builtin_options_type() const	1
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2434:26:T flatbuffers::Table::GetField(flatbuffers::voffset_t, T) const [with T = long int]	2
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2434:26:T flatbuffers::Table::GetField(flatbuffers::voffset_t, T) const [with T = signed char]	2
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2434:26:T flatbuffers::Table::GetField(flatbuffers::voffset_t, T) const [with T = float]	2
+../tensorflow/tensorflow/lite/core/api/flatbuffer_conversions.cc:140:14:TfLiteStatus tflite::ParseOpData(const Operator*, BuiltinOperator, ErrorReporter*, BuiltinDataAllocator*, void**)	222

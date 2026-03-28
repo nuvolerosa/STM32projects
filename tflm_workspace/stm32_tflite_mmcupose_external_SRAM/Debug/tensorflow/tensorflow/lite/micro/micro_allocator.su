@@ -1,0 +1,27 @@
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:55:8:virtual void tflite::{anonymous}::MicroBuiltinDataAllocator::Deallocate(void*)	0	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:47:7:tflite::{anonymous}::MicroBuiltinDataAllocator::~MicroBuiltinDataAllocator()	0	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:52:9:virtual void* tflite::{anonymous}::MicroBuiltinDataAllocator::Allocate(size_t, size_t)	0	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:47:7:virtual tflite::{anonymous}::MicroBuiltinDataAllocator::~MicroBuiltinDataAllocator()	8	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2424:13:flatbuffers::voffset_t flatbuffers::Table::GetOptionalFieldOffset(flatbuffers::voffset_t) const	0	static
+../tensorflow/tensorflow/lite/schema/schema_generated.h:1052:20:const char* tflite::EnumNameBuiltinOperator(BuiltinOperator)	0	static
+../tensorflow/tensorflow/lite/schema/schema_generated.h:2990:37:const flatbuffers::Vector<float>* tflite::QuantizationParameters::scale() const	8	static
+../tensorflow/tensorflow/lite/schema/schema_generated.h:2993:39:const flatbuffers::Vector<long long int>* tflite::QuantizationParameters::zero_point() const	8	static
+../tensorflow/tensorflow/lite/schema/schema_generated.h:3599:8:bool tflite::Tensor::is_variable() const	8	static
+../tensorflow/tensorflow/lite/schema/schema_generated.h:10306:67:const flatbuffers::Vector<flatbuffers::Offset<tflite::Tensor> >* tflite::SubGraph::tensors() const	8	static
+../tensorflow/tensorflow/lite/schema/schema_generated.h:10315:69:const flatbuffers::Vector<flatbuffers::Offset<tflite::Operator> >* tflite::SubGraph::operators() const	8	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:420:8:size_t tflite::MicroAllocator::used_bytes() const	8	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:619:14:TfLiteStatus tflite::MicroAllocator::AllocatePersistentBuffer(size_t, void**)	16	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:632:14:TfLiteStatus tflite::MicroAllocator::RequestScratchBufferInArena(int, size_t, int*)	24	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:669:7:void* tflite::MicroAllocator::GetScratchBuffer(int) const	8	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:256:15:flatbuffers::Vector<T>::return_type flatbuffers::Vector<T>::Get(flatbuffers::uoffset_t) const [with T = float]	8	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:256:15:flatbuffers::Vector<T>::return_type flatbuffers::Vector<T>::Get(flatbuffers::uoffset_t) const [with T = long long int]	8	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:256:15:flatbuffers::Vector<T>::return_type flatbuffers::Vector<T>::Get(flatbuffers::uoffset_t) const [with T = long int]	8	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:256:15:flatbuffers::Vector<T>::return_type flatbuffers::Vector<T>::Get(flatbuffers::uoffset_t) const [with T = flatbuffers::Offset<tflite::Tensor>]	8	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:256:15:flatbuffers::Vector<T>::return_type flatbuffers::Vector<T>::Get(flatbuffers::uoffset_t) const [with T = flatbuffers::Offset<tflite::Operator>]	8	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2439:26:P flatbuffers::Table::GetPointer(flatbuffers::voffset_t) [with P = const flatbuffers::Vector<unsigned char>*]	8	static
+../third_party/flatbuffers/include/flatbuffers/flatbuffers.h:2439:26:P flatbuffers::Table::GetPointer(flatbuffers::voffset_t) [with P = const flatbuffers::Vector<long int>*]	8	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:259:14:TfLiteStatus tflite::internal::InitializeRuntimeTensor(tflite::SimpleMemoryAllocator*, const tflite::Tensor&, const flatbuffers::Vector<flatbuffers::Offset<tflite::Buffer> >*, tflite::ErrorReporter*, TfLiteTensor*)	56	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:383:14:TfLiteStatus tflite::MicroAllocator::Init()	32	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:433:1:tflite::MicroAllocator::MicroAllocator(TfLiteContext*, const tflite::Model*, uint8_t*, size_t, tflite::ErrorReporter*)	24	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:464:14:TfLiteStatus tflite::MicroAllocator::AllocateNodeAndRegistrations(const tflite::OpResolver&, tflite::NodeAndRegistration**)	80	static
+../tensorflow/tensorflow/lite/micro/micro_allocator.cc:549:14:TfLiteStatus tflite::MicroAllocator::FinishTensorAllocation()	128	static

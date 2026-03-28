@@ -7,7 +7,8 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include <srnn_small.h>
+//#include <srnn_small.h>
+#include <tcn_small.h>
 #include <sample_input.h>
 #include "stm32746g_discovery.h"
 #include "lcd.h"
@@ -80,10 +81,10 @@ int main(void)
   	error_reporter = &micro_error_reporter;						// pointer to the object micro_error_reporter
 
   	// Map the model into a usable data structure. This doesn't involve any
-    // model = tflite::GetModel(small_model);
-  	model = tflite::GetModel(srnn_small);
-    //TF_LITE_REPORT_ERROR(error_reporter, "Model size: %d bytes", small_model_len);
-  	TF_LITE_REPORT_ERROR(error_reporter, "Model size: %d bytes", srnn_small_len);
+    // model = tflite::GetModel(srnn_small);
+  	model = tflite::GetModel(tcn_small);
+    //TF_LITE_REPORT_ERROR(error_reporter, "Model size: %d bytes", srnn_small_len);
+  	TF_LITE_REPORT_ERROR(error_reporter, "Model size: %d bytes", tcn_small_len);
     TF_LITE_REPORT_ERROR(error_reporter, "Tensor arena configured: %u bytes", static_cast<unsigned>(kTensorArenaSize));
 
   	if(model->version() != TFLITE_SCHEMA_VERSION)
@@ -138,6 +139,9 @@ int main(void)
     op_status = static_cast<TfLiteStatus>(
         op_status & resolver.AddBuiltin(tflite::BuiltinOperator_QUANTIZE,
                                         tflite::ops::micro::Register_QUANTIZE(), 1, 2));
+    op_status = static_cast<TfLiteStatus>(
+        op_status & resolver.AddBuiltin(tflite::BuiltinOperator_PAD,
+                                        tflite::ops::micro::Register_PAD(), 1, 3));
     if (op_status != kTfLiteOk) {
       TF_LITE_REPORT_ERROR(error_reporter, "Operator resolver setup failed.");
       while (1);

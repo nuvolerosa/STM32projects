@@ -1,0 +1,2 @@
+../Core/debug_log.c:32:5:__io_putchar	16	static
+../Core/debug_log.c:40:6:DebugLog	0	static

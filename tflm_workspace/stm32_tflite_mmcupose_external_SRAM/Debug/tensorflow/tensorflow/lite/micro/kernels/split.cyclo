@@ -1,0 +1,4 @@
+../tensorflow/tensorflow/lite/micro/kernels/split.cc:114:21:TfLiteRegistration* tflite::ops::micro::Register_SPLIT()	1
+../tensorflow/tensorflow/lite/micro/kernels/split.cc:27:14:TfLiteStatus tflite::ops::micro::split::SplitImpl(TfLiteContext*, TfLiteNode*, const TfLiteTensor*, int) [with T = unsigned char]	10
+../tensorflow/tensorflow/lite/micro/kernels/split.cc:27:14:TfLiteStatus tflite::ops::micro::split::SplitImpl(TfLiteContext*, TfLiteNode*, const TfLiteTensor*, int) [with T = signed char]	10
+../tensorflow/tensorflow/lite/micro/kernels/split.cc:68:14:TfLiteStatus tflite::ops::micro::split::Eval(TfLiteContext*, TfLiteNode*)	33

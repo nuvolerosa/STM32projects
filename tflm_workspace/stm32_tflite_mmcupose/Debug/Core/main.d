@@ -1,4 +1,4 @@
-Core/main.o: ../Core/main.cpp ../Core/srnn_small.h ../Core/sample_input.h \
+Core/main.o: ../Core/main.cpp ../Core/tcn_small.h ../Core/sample_input.h \
  ../Drivers/BSP/STM32746G-Discovery/stm32746g_discovery.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../Core/stm32f7xx_hal_conf.h \
@@ -55,7 +55,7 @@ Core/main.o: ../Core/main.cpp ../Core/srnn_small.h ../Core/sample_input.h \
  ../tensorflow/tensorflow/lite/type_to_tflitetype.h \
  ../tensorflow/tensorflow/lite/version.h \
  ../tensorflow/tensorflow/core/public/version.h
-../Core/srnn_small.h:
+../Core/tcn_small.h:
 ../Core/sample_input.h:
 ../Drivers/BSP/STM32746G-Discovery/stm32746g_discovery.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:

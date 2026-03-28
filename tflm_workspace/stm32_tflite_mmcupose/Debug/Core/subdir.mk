@@ -8,7 +8,8 @@ CPP_SRCS += \
 ../Core/main.cpp \
 ../Core/sine_model.cpp \
 ../Core/small_model.cpp \
-../Core/srnn_small.cpp 
+../Core/srnn_small.cpp \
+../Core/tcn_small.cpp 
 
 C_SRCS += \
 ../Core/debug_log.c \
@@ -39,13 +40,15 @@ OBJS += \
 ./Core/stm32f7xx_it.o \
 ./Core/syscalls.o \
 ./Core/sysmem.o \
-./Core/system_stm32f7xx.o 
+./Core/system_stm32f7xx.o \
+./Core/tcn_small.o 
 
 CPP_DEPS += \
 ./Core/main.d \
 ./Core/sine_model.d \
 ./Core/small_model.d \
-./Core/srnn_small.d 
+./Core/srnn_small.d \
+./Core/tcn_small.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -57,7 +60,7 @@ Core/%.o Core/%.su Core/%.cyclo: ../Core/%.cpp Core/subdir.mk
 clean: clean-Core
 
 clean-Core:
-	-$(RM) ./Core/debug_log.cyclo ./Core/debug_log.d ./Core/debug_log.o ./Core/debug_log.su ./Core/lcd.cyclo ./Core/lcd.d ./Core/lcd.o ./Core/lcd.su ./Core/main.cyclo ./Core/main.d ./Core/main.o ./Core/main.su ./Core/sine_model.cyclo ./Core/sine_model.d ./Core/sine_model.o ./Core/sine_model.su ./Core/small_model.cyclo ./Core/small_model.d ./Core/small_model.o ./Core/small_model.su ./Core/srnn_small.cyclo ./Core/srnn_small.d ./Core/srnn_small.o ./Core/srnn_small.su ./Core/stm32f7xx_hal_msp.cyclo ./Core/stm32f7xx_hal_msp.d ./Core/stm32f7xx_hal_msp.o ./Core/stm32f7xx_hal_msp.su ./Core/stm32f7xx_it.cyclo ./Core/stm32f7xx_it.d ./Core/stm32f7xx_it.o ./Core/stm32f7xx_it.su ./Core/syscalls.cyclo ./Core/syscalls.d ./Core/syscalls.o ./Core/syscalls.su ./Core/sysmem.cyclo ./Core/sysmem.d ./Core/sysmem.o ./Core/sysmem.su ./Core/system_stm32f7xx.cyclo ./Core/system_stm32f7xx.d ./Core/system_stm32f7xx.o ./Core/system_stm32f7xx.su
+	-$(RM) ./Core/debug_log.cyclo ./Core/debug_log.d ./Core/debug_log.o ./Core/debug_log.su ./Core/lcd.cyclo ./Core/lcd.d ./Core/lcd.o ./Core/lcd.su ./Core/main.cyclo ./Core/main.d ./Core/main.o ./Core/main.su ./Core/sine_model.cyclo ./Core/sine_model.d ./Core/sine_model.o ./Core/sine_model.su ./Core/small_model.cyclo ./Core/small_model.d ./Core/small_model.o ./Core/small_model.su ./Core/srnn_small.cyclo ./Core/srnn_small.d ./Core/srnn_small.o ./Core/srnn_small.su ./Core/stm32f7xx_hal_msp.cyclo ./Core/stm32f7xx_hal_msp.d ./Core/stm32f7xx_hal_msp.o ./Core/stm32f7xx_hal_msp.su ./Core/stm32f7xx_it.cyclo ./Core/stm32f7xx_it.d ./Core/stm32f7xx_it.o ./Core/stm32f7xx_it.su ./Core/syscalls.cyclo ./Core/syscalls.d ./Core/syscalls.o ./Core/syscalls.su ./Core/sysmem.cyclo ./Core/sysmem.d ./Core/sysmem.o ./Core/sysmem.su ./Core/system_stm32f7xx.cyclo ./Core/system_stm32f7xx.d ./Core/system_stm32f7xx.o ./Core/system_stm32f7xx.su ./Core/tcn_small.cyclo ./Core/tcn_small.d ./Core/tcn_small.o ./Core/tcn_small.su
 
 .PHONY: clean-Core
 
