@@ -1,0 +1,10 @@
+12:55:26 **** Incremental Build of configuration Debug for project stm32_tflite_mmcupose_external_SRAM ****
+make -j8 all 
+arm-none-eabi-size  stm32_tflite_mmcupose_external_SRAM.elf 
+   text	   data	    bss	    dec	    hex	filename
+ 339876	    640	 397520	 738036	  b42f4	stm32_tflite_mmcupose_external_SRAM.elf
+Finished building: default.size.stdout
+ 
+
+12:55:27 Build Finished. 0 errors, 0 warnings. (took 130ms)
+

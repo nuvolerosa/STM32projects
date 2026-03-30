@@ -7,8 +7,8 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-//#include <srnn_small.h>
-#include <tcn_small.h>
+#include <srnn_small.h>
+//#include <tcn_small.h>
 #include <sample_input.h>
 #include "stm32746g_discovery.h"
 #include "lcd.h"
@@ -81,10 +81,10 @@ int main(void)
   	error_reporter = &micro_error_reporter;						// pointer to the object micro_error_reporter
 
   	// Map the model into a usable data structure. This doesn't involve any
-    // model = tflite::GetModel(srnn_small);
-  	model = tflite::GetModel(tcn_small);
-    //TF_LITE_REPORT_ERROR(error_reporter, "Model size: %d bytes", srnn_small_len);
-  	TF_LITE_REPORT_ERROR(error_reporter, "Model size: %d bytes", tcn_small_len);
+    model = tflite::GetModel(srnn_small);
+  	//model = tflite::GetModel(tcn_small);
+    TF_LITE_REPORT_ERROR(error_reporter, "Model size: %d bytes", srnn_small_len);
+  	//TF_LITE_REPORT_ERROR(error_reporter, "Model size: %d bytes", tcn_small_len);
     TF_LITE_REPORT_ERROR(error_reporter, "Tensor arena configured: %u bytes", static_cast<unsigned>(kTensorArenaSize));
 
   	if(model->version() != TFLITE_SCHEMA_VERSION)
@@ -165,40 +165,8 @@ int main(void)
   	model_input 	= interpreter->input(0);
   	model_output 	= interpreter->output(0);
 
-	// Fill input tensor with zeros
-	// memset(model_input->data.int8, 0, model_input->bytes); // TO BE MODIFIED
+	// Fill input tensor with sample data
 	memcpy(model_input->data.int8, sample_input, model_input->bytes);
-
-	// Run inference, and report any error
-	TfLiteStatus invoke_status = interpreter->Invoke();
-	if (invoke_status != kTfLiteOk)
-	{
-		TF_LITE_REPORT_ERROR(error_reporter, "Invoke failed on input data\n"); // maybe here you want to write something about the input
-		while(1);
-	}
-
-    // Validate and read the output safely based on tensor type.
-    if (model_output == nullptr || model_output->data.raw == nullptr || model_output->bytes == 0) {
-    	TF_LITE_REPORT_ERROR(error_reporter, "Output tensor/data is invalid.");
-    	while (1);
-    }
-    TF_LITE_REPORT_ERROR(error_reporter, "Output tensor type: %d, bytes: %d", static_cast<int>(model_output->type), static_cast<int>(model_output->bytes));
-    TF_LITE_REPORT_ERROR(error_reporter, "Output data ptr: %x", static_cast<unsigned>(reinterpret_cast<uintptr_t>(model_output->data.raw)));
-
-    const uintptr_t out_ptr = reinterpret_cast<uintptr_t>(model_output->data.raw);
-    const bool in_sram 		= (out_ptr >= 0x20000000u) && (out_ptr < 0x20050000u);
-    if (!in_sram) {
-    	TF_LITE_REPORT_ERROR(error_reporter,"Output data pointer out of SRAM range, aborting read.");
-    	while (1);
-    }
-    TF_LITE_REPORT_ERROR(error_reporter, "Output int8[0]: %d", static_cast<int>(model_output->data.int8[0]));
-    //for (int i = 0; i < 10; i++) {
-    //    TF_LITE_REPORT_ERROR(error_reporter, "STM out[%d] = %d", i, model_output->data.int8[i]);
-    //}
-    // end validation
-
-    // Output is quantized int8 in your logs
-    int8_t* out_q = model_output->data.int8;
 
     // Quantization params (used to convert q -> real)
     const float out_scale 	= model_output->params.scale;
@@ -207,26 +175,79 @@ int main(void)
     TF_LITE_REPORT_ERROR(error_reporter, "scale x1000 = %d", (int)(out_scale * 1000));
     TF_LITE_REPORT_ERROR(error_reporter, "zero point = %d", out_zp);
 
-
-    float x_skel[J];
-    float y_skel[J];
-
-    const int base = 0 * (J * C); // batch index 0, base offset in reshape(32,57)
-
-    // Dequantize joint x (coord 0) and y (coord 2), then draw all joints as dots.
-    for (int j = 0; j < J; j++) {
-      int idx_x = base + j * C + 0;
-      int idx_y = base + j * C + 2;
-
-      float x = (static_cast<int32_t>(out_q[idx_x]) - out_zp) * out_scale;
-      float y = (static_cast<int32_t>(out_q[idx_y]) - out_zp) * out_scale;
-
-      x_skel[j] = x;
-      y_skel[j] = y;
+    // Warm up
+    for (int i = 0; i < 5; i++) {
+        interpreter->Invoke();
     }
+    /* Latency via HAL tick (1 ms resolution; fast inferences may show 0 ms per run). */
+    uint32_t total_ms = 0;
+    for(int i=0; i<10; i++){
+		// Run inference, and report any error
+	    const uint32_t t0 = HAL_GetTick();
+	    TfLiteStatus invoke_status = interpreter->Invoke();
+	    const uint32_t t1 = HAL_GetTick();
+	    total_ms += t1 - t0;
+		if (invoke_status != kTfLiteOk)
+		{
+			TF_LITE_REPORT_ERROR(error_reporter, "Invoke failed on input data\n"); // maybe here you want to write something about the input
+			while(1);
+		}
 
-    LCD_DrawSkeletonDots(x_skel, y_skel, J);
+		// Validate and read the output safely based on tensor type.
+		if (model_output == nullptr || model_output->data.raw == nullptr || model_output->bytes == 0) {
+			TF_LITE_REPORT_ERROR(error_reporter, "Output tensor/data is invalid.");
+			while (1);
+		}
+		//TF_LITE_REPORT_ERROR(error_reporter, "Output tensor type: %d, bytes: %d", static_cast<int>(model_output->type), static_cast<int>(model_output->bytes));
+		//TF_LITE_REPORT_ERROR(error_reporter, "Output data ptr: %x", static_cast<unsigned>(reinterpret_cast<uintptr_t>(model_output->data.raw)));
 
+		const uintptr_t out_ptr = reinterpret_cast<uintptr_t>(model_output->data.raw);
+		const bool in_sram 		= (out_ptr >= 0x20000000u) && (out_ptr < 0x20050000u);
+		if (!in_sram) {
+			TF_LITE_REPORT_ERROR(error_reporter,"Output data pointer out of SRAM range, aborting read.");
+			while (1);
+		}
+		//TF_LITE_REPORT_ERROR(error_reporter, "Output int8[0]: %d", static_cast<int>(model_output->data.int8[0]));
+		//for (int i = 0; i < 10; i++) {
+		//    TF_LITE_REPORT_ERROR(error_reporter, "STM out[%d] = %d", i, model_output->data.int8[i]);
+		//}
+		// end validation
+
+		// Output is quantized int8 in your logs
+		int8_t* out_q = model_output->data.int8;
+
+		float x_skel[J];
+		float y_skel[J];
+
+		const int base = 0 * (J * C); // batch index 0, base offset in reshape(32,57)
+
+		// Dequantize joint x (coord 0) and y (coord 2), then draw all joints as dots.
+		for (int j = 0; j < J; j++) {
+		  int idx_x = base + j * C + 0;
+		  int idx_y = base + j * C + 2;
+
+		  float x = (static_cast<int32_t>(out_q[idx_x]) - out_zp) * out_scale;
+		  float y = (static_cast<int32_t>(out_q[idx_y]) - out_zp) * out_scale;
+
+		  x_skel[j] = x;
+		  y_skel[j] = y;
+		}
+
+		LCD_DrawSkeletonDots(x_skel, y_skel, J);
+	}
+
+    /*
+     * total_ms = sum of (t1-t0) over 10 runs, each delta in HAL ticks (default 1 tick = 1 ms).
+     * Average per Invoke = total_ms / 10. Represent as hundredths of ms without float:
+     *   avg_centi = total_ms * 10  (e.g. sum 4915 ms -> 49150 -> "491.50 ms" avg, ~0.49 s)
+     *   not ~4915 ms unless sum ~49150 ms (~4.9 s per Invoke).
+     */
+    const uint32_t avg_centi = total_ms * 10u;
+    TF_LITE_REPORT_ERROR(error_reporter,
+                         "Invoke: sum %u ms (10 runs), avg %u.%02u ms each",
+                         total_ms,
+                         avg_centi / 100u,
+                         avg_centi % 100u);
     // Do not return from main() on bare-metal targets.
     while (1) {
       HAL_Delay(1000);
@@ -356,7 +377,6 @@ static void cpu_cache_enable(void)
     // Enable D-Cache
     SCB_EnableDCache();
 }
-
 #ifdef  USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number

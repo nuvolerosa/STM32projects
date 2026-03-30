@@ -183,7 +183,12 @@ int main(void)
 	memcpy(model_input->data.int8, sample_input, model_input->bytes);
 
 	// Run inference, and report any error
-	TfLiteStatus invoke_status = interpreter->Invoke();
+	/* volatile: so t0/t1/total_ms stay in memory for debugger (-O2 often shows "optimized out" otherwise). */
+    volatile uint32_t t0 = HAL_GetTick();
+    TfLiteStatus invoke_status = interpreter->Invoke();
+    volatile uint32_t t1 = HAL_GetTick();
+    volatile uint32_t total_ms = t1 - t0;
+
 	if (invoke_status != kTfLiteOk)
 	{
 		TF_LITE_REPORT_ERROR(error_reporter, "Invoke failed on input data\n"); // maybe here you want to write something about the input
